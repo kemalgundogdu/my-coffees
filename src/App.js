@@ -4,7 +4,7 @@ import MapView from "./components/Map";
 
 const App = () => (
   <APIProvider
-    apiKey={"AIzaSyDYGKH8deelB4rECL5uQoGB-SYhh1IByL8"}
+    apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
     onLoad={() => console.log("Maps API has loaded.")}
   >
     <MapView />
