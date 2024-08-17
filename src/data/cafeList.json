@@ -1,6 +1,7 @@
 [
   {
-    "name": "Cafe 1",
+    "id": 1,
+    "name": "Starbucks",
     "address": "1234 Main St",
     "city": "Los Angeles",
     "state": "CA",
@@ -11,7 +12,8 @@
     "image": "cafe1.jpg"
   },
   {
-    "name": "Cafe 2",
+    "id": 2,
+    "name": "Espressolab",
     "address": "5678 Elm St",
     "city": "Los Angeles",
     "state": "CA",
@@ -22,7 +24,8 @@
     "image": "cafe2.jpg"
   },
   {
-    "name": "Cafe 3",
+    "id": 3,
+    "name": "Columbia",
     "address": "9101 Oak St",
     "city": "Los Angeles",
     "state": "CA",
@@ -31,5 +34,89 @@
     "hours": "10am-7pm",
     "website": "www.cafe3.com",
     "image": "cafe3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Blue Bottle Coffee",
+    "address": "1122 Pine St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90004",
+    "phone": "456-789-0123",
+    "hours": "7am-4pm",
+    "website": "www.cafe4.com",
+    "image": "cafe4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Coffee Bean",
+    "address": "3344 Maple St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90005",
+    "phone": "567-890-1234",
+    "hours": "8am-6pm",
+    "website": "www.cafe5.com",
+    "image": "cafe5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Philz Coffee",
+    "address": "5566 Cedar St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90006",
+    "phone": "678-901-2345",
+    "hours": "6am-3pm",
+    "website": "www.cafe6.com",
+    "image": "cafe6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Intelligentsia Coffee",
+    "address": "7788 Birch St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90007",
+    "phone": "789-012-3456",
+    "hours": "9am-8pm",
+    "website": "www.cafe7.com",
+    "image": "cafe7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Verve Coffee",
+    "address": "9900 Spruce St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90008",
+    "phone": "890-123-4567",
+    "hours": "7am-6pm",
+    "website": "www.cafe8.com",
+    "image": "cafe8.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Groundwork Coffee",
+    "address": "1133 Ash St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90009",
+    "phone": "901-234-5678",
+    "hours": "8am-7pm",
+    "website": "www.cafe9.com",
+    "image": "cafe9.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Peet's Coffee",
+    "address": "4455 Willow St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90010",
+    "phone": "012-345-6789",
+    "hours": "6am-5pm",
+    "website": "www.cafe10.com",
+    "image": "cafe10.jpg"
   }
 ]
