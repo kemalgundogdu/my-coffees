@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Cafe 1",
+    "address": "1234 Main St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90001",
+    "phone": "123-456-7890",
+    "hours": "8am-5pm",
+    "website": "www.cafe1.com",
+    "image": "cafe1.jpg"
+  },
+  {
+    "name": "Cafe 2",
+    "address": "5678 Elm St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90002",
+    "phone": "234-567-8901",
+    "hours": "9am-6pm",
+    "website": "www.cafe2.com",
+    "image": "cafe2.jpg"
+  },
+  {
+    "name": "Cafe 3",
+    "address": "9101 Oak St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90003",
+    "phone": "345-678-9012",
+    "hours": "10am-7pm",
+    "website": "www.cafe3.com",
+    "image": "cafe3.jpg"
+  }
+]

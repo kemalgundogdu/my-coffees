@@ -1,19 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../images/logo.png";
 import { HiOutlineFilter } from "react-icons/hi";
+import cafeList from "../../data/cafeList";
 
 function Bar() {
+  const [open, setOpen] = useState(false);
+
+  const openHandle = () => {
+    setOpen(!open);
+  };
+
   return (
-    <div className="absolute flex items-center gap-4 justify-between z-50 bg-white rounded py-2 px-1 top-5 left-1/2 transform -translate-x-1/2 w-[90%] md:max-w-[350px]">
-      <img src={Logo} alt="My Coffee's" className="w-12" />
-      {/* filter button and sort button */}
-      <div className="flex justify-end mt-2 mr-2 gap-2">
-        <button className="flex items-center gap-0 px-2 py-1 text-sm border rounded">
-          <HiOutlineFilter className="mr-2 h-4 w-4" />
-          Filtrele
-        </button>
+    <>
+      <div className="fixed top-4 px-2 w-full z-30">
+        <div className="p-1 rounded bg-white shadow-lg inline-block">
+          <img src={Logo} alt="My Coffee's" className="w-12" />
+        </div>
+        <div className="absolute right-0 mr-2 top-0">
+          <button
+            className="p-2 rounded bg-white shadow-lg"
+            onClick={openHandle}
+          >
+            <HiOutlineFilter size={24} />
+          </button>
+        </div>
       </div>
-    </div>
+      <div
+        className={`fixed top-0 ${
+          open === false ? `-right-full` : `right-0`
+        } w-[62%] h-full bg-white transition-all z-20`}
+      >
+        <div className="p-4">
+          <h2 className="font-semibold text-lg">Kafe Seç</h2>
+          <div className="mt-4">
+            {/* cafe list */}
+            {
+              cafeList.map((cafe, index) => (
+                <div key={index}>
+                  <input type="checkbox" id={cafe.id} name={cafe.name} value={cafe.name} />
+                  <label htmlFor={cafe.id}>{cafe.name}</label>
+                </div>
+              ))
+            }            
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
