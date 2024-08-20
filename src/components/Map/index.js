@@ -1,15 +1,30 @@
-import React from "react";
-import { Map } from "@vis.gl/react-google-maps";
+import React, { useState, useEffect } from "react";
+import { Map, AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
 import Bar from "../Bar";
 
+import { getCafes } from "../../api";
+
 function MapView() {
+  const [cafes, setCafes] = useState([]);
+
+  useEffect(() => {
+    getCafes().then((data) => {
+      setCafes(data.results);
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log("cafeler:", cafes);
+  }, [cafes]);
   return (
     <Map
+      mapId={"a9256a2a167e5e4a"} // light map kimliği
       style={{ width: "100vw", height: "100vh" }} // Haritanın boyutları
       defaultCenter={{ lat: 41.0847699, lng: 29.0492408 }} // Haritanın başlangıç merkezi
-      defaultZoom={10} // Haritanın başlangıç yakınlaştırma seviyesi
+      defaultZoom={12} // Haritanın başlangıç yakınlaştırma seviyesi
       gestureHandling={"greedy"} // Kullanıcı etkileşimlerinin nasıl ele alınacağı
       disableDefaultUI={true} // Tüm varsayılan UI kontrollerini devre dışı bırakır
+      componentRestrictions={{ country: "TR" }} // Harita bileşenlerinin kısıtlamaları
       options={{
         fullscreenControl: false, // Tam ekran kontrol düğmesini kaldırır
         mapTypeControl: false, // Harita türü kontrol düğmesini kaldırır
@@ -17,90 +32,21 @@ function MapView() {
         zoomControl: false, // Yakınlaştırma kontrol düğmesini kaldırır
       }}
       mapTypeId={"roadmap"} // Haritanın türü (örneğin, 'roadmap', 'satellite', 'hybrid', 'terrain')
-      clickableIcons={false} // Yer işaretlerinin tıklanabilir olup olmadığı
-      
-      styles={[
-        { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-        {
-          featureType: "administrative.locality",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "poi",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "poi.park",
-          elementType: "geometry",
-          stylers: [{ color: "#263c3f" }],
-        },
-        {
-          featureType: "poi.park",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#6b9a76" }],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry",
-          stylers: [{ color: "#38414e" }],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#212a37" }],
-        },
-        {
-          featureType: "road",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#9ca5b3" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "geometry",
-          stylers: [{ color: "#746855" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#1f2835" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#f3d19c" }],
-        },
-        {
-          featureType: "transit",
-          elementType: "geometry",
-          stylers: [{ color: "#2f3948" }],
-        },
-        {
-          featureType: "transit.station",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "water",
-          elementType: "geometry",
-          stylers: [{ color: "#17263c" }],
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#515c6d" }],
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.stroke",
-          stylers: [{ color: "#17263c" }],
-        },
-      ]} // Harita stilleri
     >
-      <Bar/>
+      <Bar />
+      {/* kafelerin konunları listeleniyor */}
+      {cafes.map((place, index) => (
+        <AdvancedMarker
+          key={index}
+          position={{
+            lat: place.geometry.location.lat,
+            lng: place.geometry.location.lng,
+          }}
+          title={place.name}
+        >
+          <Pin background={"#e45757"} borderColor={"#ffb0b0"} scale={1} />
+        </AdvancedMarker>
+      ))}
     </Map>
   );
 }

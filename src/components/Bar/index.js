@@ -42,22 +42,12 @@ function Bar() {
                 key={index}
                 className="flex gap-2 mt-3 justify-center items-center"
               >
-                <input
-                  type="checkbox"
-                  id={cafe.id}
-                  name={cafe.name}
-                  value={cafe.name}
-                  className="appearance-none w-4 h-4 border-2 border-blue-200 rounded-full bg-white mt-1 checked:bg-blue-500 checked:border-0"
-                />
-                <label className="text-sm" htmlFor={cafe.id}>
+                <button className="text-sm" htmlFor={cafe.id}>
                   {cafe.name}
-                </label>
+                </button>
               </div>
             ))}
           </div>
-          <button className="py-1 bg-emerald-500 text-white rounded w-[96%] mx-auto fixed bottom-4">
-            Uygula
-          </button>
         </div>
       </div>
     </>
