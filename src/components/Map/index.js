@@ -40,6 +40,8 @@ function MapView() {
     );
   }, [lat, lon, setLat, setLon, name]);
 
+  const defaultCenterHandle = userLocation || { lat: 41.0347039, lng: 29.0188092 }
+
   const handleMarkerClick = (index) => {
     setActiveMarkerIndex(index === activeMarkerIndex ? null : index);
   };
@@ -48,7 +50,7 @@ function MapView() {
     <Map
       mapId={"a9256a2a167e5e4a"}
       style={{ width: "100vw", height: "100vh" }}
-      defaultCenter={userLocation || { lat: 41.0347039, lng: 29.0188092 }}
+      defaultCenter={defaultCenterHandle}
       defaultZoom={12}
       gestureHandling={"greedy"}
       disableDefaultUI={true}
