@@ -14,6 +14,7 @@ function MapView() {
   const { lat, lon, setLat, setLon } = useLocation();
   const [cafes, setCafes] = useState([]);
   const { name } = useName();
+  const [userLocation, setUserLocation] = useState(null);
 
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
   const markerRefs = useRef([]);
@@ -26,25 +27,28 @@ function MapView() {
       });
     }
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLat(position.coords.latitude);
-      setLon(position.coords.longitude);
-    });
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setUserLocation({ lat: latitude, lng: longitude });
+        setLat(latitude);
+        setLon(longitude);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }, [lat, lon, setLat, setLon, name]);
-
-  useEffect(() => {
-    console.log("cafeler:", cafes);
-  }, [cafes]);
 
   const handleMarkerClick = (index) => {
     setActiveMarkerIndex(index === activeMarkerIndex ? null : index);
   };
-
+ 
   return (
     <Map
       mapId={"a9256a2a167e5e4a"}
       style={{ width: "100vw", height: "100vh" }}
-      defaultCenter={{ lat: 41.3107596, lng: 36.3317716 }}
+      defaultCenter={userLocation || { lat: 41.0347039, lng: 29.0188092 }}
       defaultZoom={12}
       gestureHandling={"greedy"}
       disableDefaultUI={true}
@@ -79,9 +83,10 @@ function MapView() {
                 onCloseClick={() => handleMarkerClick(index)}
               >
                 <div>
-                  <h2 className="text-lg font-semibold -mt-8 relative z-30">{place.name}</h2>
+                  <h2 className="text-lg font-semibold">
+                    {place.name}
+                  </h2>
                   <p className="text-sm">{place.vicinity}</p>
-
                   <div className="flex flex-col gap-1 mt-1">
                     <a
                       href={`https://www.google.com/maps/dir/?api=1&destination=${place.geometry.location.lat},${place.geometry.location.lng}`}

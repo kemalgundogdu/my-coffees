@@ -4,6 +4,7 @@ import axios from "axios";
 const getCafes = async (lat, lon, name) => {
   // filtrelerken kullanılacak ismi küçük harfe çevir
   const lowerName = name ? name.toLowerCase() : "";
+  // Google Places API'yi kullanarak kafeleri getir
   const proxyUrl = "https://api.allorigins.win/get?url=";
   const targetUrl = encodeURIComponent(
     `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lon}&radius=12000&type=cafe&keyword=${name}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
