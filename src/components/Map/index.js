@@ -57,8 +57,8 @@ function MapView() {
         <Map
           mapId={"a9256a2a167e5e4a"}
           style={{ width: "100vw", height: "100vh" }}
-          center={userLocation}
-          zoom={12}
+          defaultCenter={userLocation}
+          defaultZoom={12}
           gestureHandling={"greedy"}
           disableDefaultUI={false}
           componentRestrictions={{ country: "TR" }}
