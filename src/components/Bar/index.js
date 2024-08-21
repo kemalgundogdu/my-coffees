@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import Logo from "../../images/logo.png";
 import { HiOutlineFilter } from "react-icons/hi";
 import cafeList from "../../data/cafeList";
+import { useName } from "../../context/nameContext";
 
 function Bar() {
   const [open, setOpen] = useState(false);
+  const { setName } = useName();
 
   const openHandle = () => {
     setOpen(!open);
+  };
+
+  const handleName = (name) => () => {
+    setName(name);
+    setOpen(false);
   };
 
   return (
@@ -42,7 +49,7 @@ function Bar() {
                 key={index}
                 className="flex gap-2 mt-3 justify-center items-center"
               >
-                <button className="text-sm" htmlFor={cafe.id}>
+                <button className="text-sm" onClick={handleName(cafe.name)}>
                   {cafe.name}
                 </button>
               </div>
